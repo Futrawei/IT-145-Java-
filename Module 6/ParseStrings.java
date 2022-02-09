@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 public class ParseStrings {
-   public static void main(String[] args) {
-        Scanner scnr = new Scanner(System.in);
+    public static void main(String[] args) {
+        Scanner scr = new Scanner(System.in);
         Scanner inSS = null;
         String lineString = "";
         String firstWord = "";
@@ -10,23 +10,23 @@ public class ParseStrings {
 
         System.out.println("Enter input string: ");
 
-        while (lineString.matches("q") == false) {
-            lineString = scnr.nextLine();
+        while (!lineString.matches("q")) {
+            lineString = scr.nextLine();
             lineString = lineString.replaceAll(",",", ");
             inSS = new Scanner(lineString);
-            int delimComma = lineString.indexOf(",");
+            int deliComma = lineString.indexOf(",");
 
-            if ((delimComma <= -1) && (lineString.matches("q") == false)) {
+            if ((deliComma <= -1) && (!lineString.matches("q"))) {
                 System.out.println("Error: No comma in string");
                 System.out.println("Enter input string: ");
             }
 
-            else if ((delimComma <= -1) && (lineString == null || lineString.length() == 0 || lineString.split("\\s+").length < 2) && (lineString.matches("q") == false)) {
+            else if ((deliComma <= -1) && ((lineString == null) || (lineString.length() == 0) || (lineString.split("\\s+").length < 2)) && (lineString.matches("q") == false)) {
                 System.out.println("Error: Two words");
                 System.out.println("Enter input string: ");
             }
 
-            else if (lineString.matches("q") == false) {
+            else if (!lineString.matches("q")) {
                 firstWord = inSS.next();
                 nextWord = inSS.nextLine();
                 System.out.println("First word: " + firstWord.replaceAll("\\s","").replaceAll("\\W","").replaceAll("\\n",""));
@@ -37,10 +37,8 @@ public class ParseStrings {
 
                 System.out.println("Enter input string: ");
             }
-            continue;
         }
 
-        return;
     }
 
 }
